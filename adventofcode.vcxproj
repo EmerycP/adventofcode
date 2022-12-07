@@ -156,12 +156,15 @@
   <ItemGroup>
     <ClCompile Include="adventofcode.cpp" />
     <ClCompile Include="december1st.cpp" />
+    <ClCompile Include="december2nd.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\december1st.h" />
+    <ClInclude Include="headers\december2nd.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="inputs\december1st.txt" />
+    <Content Include="inputs\december2nd.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
