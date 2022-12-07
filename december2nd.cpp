@@ -19,6 +19,21 @@ int calculateShape(char shape)
     }
 }
 
+int calculateOpposite(char shape, bool shouldWin)
+{
+    switch (shape)
+    {
+    case 65:
+        return shouldWin ? 2 : 3;
+    case 66:
+        return shouldWin ? 3 : 1;
+    case 67:
+        return shouldWin ? 1 : 2;
+    default:
+        return 0;
+    }
+}
+
 
 void December2nd()
 {
@@ -34,13 +49,32 @@ void December2nd()
 
         char opponent = (char)s.substr(0, s.find(" "))[0];
         char player = (char)s.substr(2, s.find(" "))[0];
+
+        // Part 1
+        // if((player - opponent) == 23) // Draw
+        //     sum += (3 + calculateShape(player));
+        // else if(((player - opponent) % 3) == 0) // Win
+        //     sum += (6 + calculateShape(player));
+        // else // Lose
+        //     sum += calculateShape(player);
+
+        // Part 2
+        switch (player)
+        {
+        case 88: // Lose
+            sum += calculateOpposite(opponent, false);
+            break;
+        case 89: // Draw
+            sum += 3 + calculateShape(opponent += 23);
+            break;
+        case 90: // Win
+            sum += 6 + calculateOpposite(opponent, true);
+            break;
+        default:
+            break;
+        }
+            
         
-        if((player - opponent) == 23) // Draw
-            sum += (3 + calculateShape(player));
-        else if(((player - opponent) % 3) == 0) // Win
-            sum += (6 + calculateShape(player));
-        else // Lose
-            sum += calculateShape(player);
     }
     std::cout << "The total score is : " << sum; 
 }
