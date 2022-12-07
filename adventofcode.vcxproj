@@ -158,10 +158,10 @@
     <ClCompile Include="december1st.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="inputs" />
+    <ClInclude Include="headers\december1st.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="headers\december1st.h" />
+    <Content Include="inputs\december1st.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
