@@ -8,7 +8,7 @@
 
 int transformValue(char t, char t2)
 {
-    if(t2 != '-')
+    if(t2 != '-' && t2 != ',')
         return (((int)t - '0') * 10) + (int)t2 - '0';
     else
         return (int)t - '0';
@@ -20,12 +20,11 @@ void December4th()
     std::ifstream f( "inputs/december4th");
     std::string s;
     int count = 0;
-    
     // Read file
     while (getline( f, s ))
     {
         std::string fAssign = s.substr(0, s.length() / 2);
-        std::string sAssign = s.substr(s.length() / 2 + 1);
+        std::string sAssign = s.substr(s.length() % 2 == 0 ? s.length() / 2 : s.length() / 2 + 1);
         
         int compareValueA = transformValue(fAssign[0], fAssign[1]);
         int index = fAssign[1] != '-' ? 3 : 2;
