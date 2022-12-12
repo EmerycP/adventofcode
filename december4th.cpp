@@ -45,8 +45,6 @@ void December4th()
             std::getline(pairsToDelimit, currentDelimitedPair, '-');
             secondOfPair.push_back(stoi(currentDelimitedPair));
         }
-
-        
         
         if(firstOfPair[0] <= secondOfPair[1] && firstOfPair[0] >= firstOfPair[1] &&
             secondOfPair[0] >= firstOfPair[1] && secondOfPair[0] <= secondOfPair[1])
