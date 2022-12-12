@@ -45,12 +45,21 @@ void December4th()
             std::getline(pairsToDelimit, currentDelimitedPair, '-');
             secondOfPair.push_back(stoi(currentDelimitedPair));
         }
-        
-        if(firstOfPair[0] <= secondOfPair[1] && firstOfPair[0] >= firstOfPair[1] &&
-            secondOfPair[0] >= firstOfPair[1] && secondOfPair[0] <= secondOfPair[1])
+
+        // Part 1
+        // if(firstOfPair[0] <= secondOfPair[1] && firstOfPair[0] >= firstOfPair[1] &&
+        //     secondOfPair[0] >= firstOfPair[1] && secondOfPair[0] <= secondOfPair[1])
+        //         count++;
+        // else if(secondOfPair[1] >= firstOfPair[0] && secondOfPair[1] <= secondOfPair[0] &&
+        //     firstOfPair[1] <= secondOfPair[0] && firstOfPair[1] >= firstOfPair[0])
+        //         count++;
+
+        // Part 2
+        if((firstOfPair[0] <= secondOfPair[1] && firstOfPair[0] >= firstOfPair[1]) ||
+            (secondOfPair[0] >= firstOfPair[1] && secondOfPair[0] <= secondOfPair[1]))
                 count++;
-        else if(secondOfPair[1] >= firstOfPair[0] && secondOfPair[1] <= secondOfPair[0] &&
-            firstOfPair[1] <= secondOfPair[0] && firstOfPair[1] >= firstOfPair[0])
+        else if((secondOfPair[1] >= firstOfPair[0] && secondOfPair[1] <= secondOfPair[0]) ||
+            (firstOfPair[1] <= secondOfPair[0] && firstOfPair[1] >= firstOfPair[0]))
                 count++;
     }
     std::cout << count;
