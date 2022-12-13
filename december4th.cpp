@@ -19,26 +19,47 @@ void December4th()
     // File infos
     std::ifstream f( "inputs/december4th");
     std::string s;
+
     int count = 0;
+    
     // Read file
     while (getline( f, s ))
     {
-        std::string fAssign = s.substr(0, s.length() / 2);
-        std::string sAssign = s.substr(s.length() % 2 == 0 ? s.length() / 2 : s.length() / 2 + 1);
-        
-        int compareValueA = transformValue(fAssign[0], fAssign[1]);
-        int index = fAssign[1] != '-' ? 3 : 2;
-        int compareValueB = transformValue(fAssign[index], fAssign[index + 1]);
-        
-        int compareValueC = transformValue(sAssign[0], sAssign[1]);
-        int index2 = sAssign[1] != '-' ? 3 : 2;
-        int compareValueD = transformValue(sAssign[index2], sAssign[index2 + 1]);
-        
-        if(compareValueA <= compareValueD && compareValueA >= compareValueC &&
-            compareValueB >= compareValueC && compareValueB <= compareValueD)
+        // Vectors for comparaison   
+        std::vector<int> firstOfPair;
+        std::vector<int> secondOfPair;
+
+        // Get both pair
+        std::stringstream line(s);
+        std::string pair;
+        while(getline(line, pair, ','))
+        {
+            std::stringstream pairsToDelimit(pair);
+            std::string currentDelimitedPair;
+
+            // First value of the pair
+            getline(pairsToDelimit, currentDelimitedPair, '-');
+            firstOfPair.push_back(stoi(currentDelimitedPair));
+
+            // Second value of the pair
+            std::getline(pairsToDelimit, currentDelimitedPair, '-');
+            secondOfPair.push_back(stoi(currentDelimitedPair));
+        }
+
+        // Part 1
+        // if(firstOfPair[0] <= secondOfPair[1] && firstOfPair[0] >= firstOfPair[1] &&
+        //     secondOfPair[0] >= firstOfPair[1] && secondOfPair[0] <= secondOfPair[1])
+        //         count++;
+        // else if(secondOfPair[1] >= firstOfPair[0] && secondOfPair[1] <= secondOfPair[0] &&
+        //     firstOfPair[1] <= secondOfPair[0] && firstOfPair[1] >= firstOfPair[0])
+        //         count++;
+
+        // Part 2
+        if((firstOfPair[0] <= secondOfPair[1] && firstOfPair[0] >= firstOfPair[1]) ||
+            (secondOfPair[0] >= firstOfPair[1] && secondOfPair[0] <= secondOfPair[1]))
                 count++;
-        else if(compareValueA >= compareValueD && compareValueA <= compareValueC &&
-            compareValueB <= compareValueC && compareValueB >= compareValueD)
+        else if((secondOfPair[1] >= firstOfPair[0] && secondOfPair[1] <= secondOfPair[0]) ||
+            (firstOfPair[1] <= secondOfPair[0] && firstOfPair[1] >= firstOfPair[0]))
                 count++;
     }
     std::cout << count;
