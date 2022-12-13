@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <climits>
 #include <sstream>
 
 void extractIntegerWords(std::string str, std::vector<int>& vec)
