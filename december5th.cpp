@@ -38,6 +38,14 @@ void December5th()
         if (s.find("from") != std::string::npos) {
             extractIntegerWords(s, instructions);
             // to add
+
+            // Reverse every stacks
+            for (int i = 0; i < stacks.size(); ++i)
+            {
+                std::reverse(stacks[i].begin(), stacks[i].end());
+            }
+
+            // insert logic of transferring here
         }
         else if(!s.empty())
         {
@@ -61,6 +69,4 @@ void December5th()
             }
         }
     }
-
-    
 }
