@@ -30,6 +30,7 @@ void December5th()
     std::string s;
 
     std::vector<std::vector<char>> stacks(9);
+    bool firstIteration = true;
     
     // Read file
     while (getline( f, s ))
@@ -40,9 +41,13 @@ void December5th()
             // to add
 
             // Reverse every stacks
-            for (int i = 0; i < stacks.size(); ++i)
+            if(firstIteration)
             {
-                std::reverse(stacks[i].begin(), stacks[i].end());
+                for (int i = 0; i < stacks.size(); ++i)
+                {
+                    std::reverse(stacks[i].begin(), stacks[i].end());
+                }
+                firstIteration = false;
             }
 
             for (int i = 0; i < instructions[0]; ++i)
