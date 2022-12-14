@@ -45,7 +45,12 @@ void December5th()
                 std::reverse(stacks[i].begin(), stacks[i].end());
             }
 
-            // insert logic of transferring here
+            for (int i = 0; i < instructions[0]; ++i)
+            {
+                char lastChar = stacks[instructions[1] - 1].at(stacks[instructions[1] - 1].size() - 1);
+                stacks[instructions[1] - 1].pop_back();
+                stacks[instructions[2] - 1].push_back(lastChar);
+            }
         }
         else if(!s.empty())
         {
@@ -55,7 +60,8 @@ void December5th()
             {
                 if(index == 1 && (character > 57 || character < 49))
                 {
-                    stacks[vectorIdx].push_back(character);
+                    if(character != ' ')
+                        stacks[vectorIdx].push_back(character);
                     vectorIdx++;
                 }
 
@@ -69,4 +75,11 @@ void December5th()
             }
         }
     }
+
+    std::cout << "Here's every crate on top: ";
+    for (int i = 0; i < stacks.size(); ++i)
+    {
+        std::cout << stacks[i].at(stacks[i].size() - 1);
+    }
+    
 }
